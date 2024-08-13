@@ -2,7 +2,6 @@ require("gmsv")
 
 local color_red = Color(255, 0, 0, 255)
 local color_blue = Color(0, 0, 255, 255)
-local color_white = Color(255, 255, 255, 255)
 
 if SERVER then
 	util.AddNetworkString("gmsv_BulletTracer")
@@ -16,10 +15,7 @@ do
 
 		function DisplayTracer(self, StartPos, EndPos, Color)
 			debugoverlay.Line(StartPos, EndPos, 3, Color)
-
-			if Color ~= color_white then
-				debugoverlay.Box(EndPos, BoxMins, BoxMaxs, 3, Color)
-			end
+			debugoverlay.Box(EndPos, BoxMins, BoxMaxs, 3, Color)
 		end
 
 		net.Receive("gmsv_BulletTracer", function()
